@@ -1,28 +1,29 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 export default function CustomCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const mousePosition = useRef({ x: 0, y: 0 });
+  const [, setRerender] = useState(0); // force rerender
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      mousePosition.current = { x: e.clientX, y: e.clientY };
+      setRerender((v) => v + 1); // force rerender
     };
-
-    const handleMouseEnter = () => setIsHovering(true);
-    const handleMouseLeave = () => setIsHovering(false);
+    const handleMouseEnter = () => setIsVisible(true);
+    const handleMouseLeave = () => setIsVisible(false);
 
     window.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseenter", handleMouseEnter);
-    document.addEventListener("mouseleave", handleMouseLeave);
+    window.addEventListener("mouseenter", handleMouseEnter);
+    window.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseenter", handleMouseEnter);
-      document.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("mouseenter", handleMouseEnter);
+      window.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
 
@@ -31,9 +32,9 @@ export default function CustomCursor() {
       <motion.div
         className="fixed w-4 h-4 bg-primary rounded-full pointer-events-none z-50 mix-blend-difference"
         animate={{
-          x: mousePosition.x - 8,
-          y: mousePosition.y - 8,
-          scale: isHovering ? 1 : 0,
+          x: mousePosition.current.x - 8,
+          y: mousePosition.current.y - 8,
+          scale: isVisible ? 1 : 0,
         }}
         transition={{
           type: "spring",
@@ -45,9 +46,9 @@ export default function CustomCursor() {
       <motion.div
         className="fixed w-8 h-8 border-2 border-primary rounded-full pointer-events-none z-50"
         animate={{
-          x: mousePosition.x - 16,
-          y: mousePosition.y - 16,
-          scale: isHovering ? 1 : 0,
+          x: mousePosition.current.x - 16,
+          y: mousePosition.current.y - 16,
+          scale: isVisible ? 1 : 0,
         }}
         transition={{
           type: "spring",
