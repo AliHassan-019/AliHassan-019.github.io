@@ -6,36 +6,52 @@ import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 
 const projects = [
   {
-    title: "IoT Smart Home Controller",
-    description: "Developed a custom embedded system for home automation using ESP32, featuring real-time sensor monitoring and automated control systems.",
-    technologies: ["ESP32", "C++", "MQTT", "RTOS"],
-    image: "/images/projects/smart-home.jpg",
+    title: "Student Management System Using C++",
+    description: "Developed a data management application to handle student records efficiently. Utilized Object-Oriented Programming (OOP), file handling, data structures, and algorithm development for robust performance.",
+    technologies: ["C++", "OOP", "File Handling", "Data Structures", "Algorithms"],
+    image: "/images/projects/student-management.jpg",
+    link: "#",
+    category: "Software"
+  },
+  {
+    title: "Catheter Trackability Testing Machine",
+    description: "Integrated and calibrated a Futek load cell for accurate force measurement. Calibrated and controlled a stepper motor for precise speed and distance in testing procedures. Focused on microcontroller programming, sensor integration, and embedded C.",
+    technologies: ["Microcontroller", "Sensor Integration", "Motor Control", "Futek Load Cell", "Embedded C"],
+    image: "/images/projects/catheter-testing.jpg",
+    link: "#",
+    category: "Medical"
+  },
+  {
+    title: "IoT Based Pick & Place Robotic Arm",
+    description: "Implemented an IoT-enabled robotic arm for remote operation and automated object handling. Utilized ESP32, IoT integration, robotics, automation, and sensor interfacing.",
+    technologies: ["ESP32", "IoT", "Robotics", "Automation", "Sensor Interfacing"],
+    image: "/images/projects/robotic-arm.jpg",
     link: "#",
     category: "IoT"
   },
   {
-    title: "Industrial Monitoring System",
-    description: "Designed and implemented a real-time monitoring system for industrial equipment using STM32 microcontrollers and custom sensor interfaces.",
-    technologies: ["STM32", "C", "CAN Bus", "Modbus"],
-    image: "/images/projects/industrial.jpg",
+    title: "Disposable Real Time Pressure Monitoring Device",
+    description: "Engineered a low-cost medical device for real-time pressure monitoring to ensure accurate data collection. Used STM32, Arduino, embedded systems design, real-time data acquisition, sensor calibration, and PCB design.",
+    technologies: ["STM32", "Arduino", "Embedded Systems", "Real-Time Data", "Sensor Calibration", "PCB Design"],
+    image: "/images/projects/pressure-monitoring.jpg",
     link: "#",
+    category: "Medical"
+  },
+  {
+    title: "Flexural Testing Machine",
+    description: "Developed a mechanical testing system for material strength analysis with automated data recording. Utilized STM32, RTOS, control systems, embedded programming, and web app integration.",
+    technologies: ["STM32", "RTOS", "Control Systems", "Embedded Programming", "Web App Integration"],
+    image: "/images/projects/flexural-testing.jpg",
+    link: "https://github.com/AliHassan-019/FTM",
     category: "Industrial"
   },
   {
-    title: "Automotive ECU Development",
-    description: "Created a custom Engine Control Unit with advanced features for performance optimization and emissions control.",
-    technologies: ["ARM Cortex-M", "C", "AutoSAR", "UDS"],
-    image: "/images/projects/ecu.jpg",
-    link: "#",
-    category: "Automotive"
-  },
-  {
-    title: "Wireless Sensor Network",
-    description: "Implemented a low-power wireless sensor network for environmental monitoring using custom PCB design and mesh networking.",
-    technologies: ["PCB Design", "RF", "Low Power", "Mesh Network"],
-    image: "/images/projects/sensor-network.jpg",
-    link: "#",
-    category: "IoT"
+    title: "Robotic Arm Based Skin Tumor Detection and Intervention Using Computer Vision",
+    description: "Designed a robotic system using computer vision for automated skin tumor detection and intervention procedures. Leveraged Raspberry Pi, Python, computer vision, image processing, robotics, and machine learning algorithms.",
+    technologies: ["Raspberry Pi", "Python", "Computer Vision", "Image Processing", "Robotics", "Machine Learning"],
+    image: "/images/projects/skin-tumor-robot.jpg",
+    link: "https://github.com/AliHassan-019/Robotic-Arm-Based-Skin-Tumor-Detection-Intervention-System-Using-Computer-Vision",
+    category: "Medical"
   }
 ];
 
@@ -93,7 +109,7 @@ export default function Projects() {
           ))}
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
           <AnimatePresence>
             {filteredProjects.map((project, index) => (
               <motion.div
@@ -102,12 +118,12 @@ export default function Projects() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group"
+                className="group h-full"
                 onHoverStart={() => setHoveredProject(project.title)}
                 onHoverEnd={() => setHoveredProject(null)}
               >
                 <motion.div
-                  className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col"
                   whileHover={{ y: -5 }}
                 >
                   <div className="relative h-48 bg-gray-200 dark:bg-gray-700">
@@ -119,7 +135,7 @@ export default function Projects() {
                       transition={{ duration: 0.3 }}
                     />
                   </div>
-                  <div className="p-6">
+                  <div className="p-6 flex flex-col flex-1">
                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                       {project.title}
                     </h3>
@@ -137,14 +153,16 @@ export default function Projects() {
                         </motion.span>
                       ))}
                     </div>
-                    <motion.a
-                      href={project.link}
-                      className="inline-flex items-center text-primary hover:text-primary-dark transition-colors duration-200"
-                      whileHover={{ x: 5 }}
-                    >
-                      View Project
-                      <ArrowTopRightOnSquareIcon className="w-4 h-4 ml-2" />
-                    </motion.a>
+                    <div className="mt-auto pt-2">
+                      <motion.a
+                        href={project.link}
+                        className="inline-flex items-center text-primary hover:text-primary-dark transition-colors duration-200"
+                        whileHover={{ x: 5 }}
+                      >
+                        View Project
+                        <ArrowTopRightOnSquareIcon className="w-4 h-4 ml-2" />
+                      </motion.a>
+                    </div>
                   </div>
                 </motion.div>
               </motion.div>

@@ -20,59 +20,49 @@ interface EducationItem {
 
 const experiences: ExperienceItem[] = [
   {
-    title: "Senior Embedded Systems Engineer",
-    company: "Tech Innovations Inc.",
-    period: "2020 - Present",
+    title: "Embedded System Engineer",
+    company: "Niura",
+    period: "2025 - Present",
     description: [
-      "Led the development of embedded systems for IoT devices",
-      "Designed and implemented real-time operating systems",
-      "Optimized firmware for power efficiency and performance",
-      "Mentored junior engineers and conducted code reviews",
+      "Designed and developed embedded systems leveraging nRF series, ESP32, and STM32, utilizing Zephyr RTOS and FreeRTOS for real-time applications.",
+      "Worked on EEG data acquisition using ADS1299, integrating it into wireless earbuds for real-time bio-signal processing.",
+      "Implemented BLE, BLC, Wi-Fi, and other wireless communication protocols for IoT applications.",
+      "Wrote optimized firmware in C/C++, integrating UART, SPI, I2C, and DMA for efficient hardware interaction.",
+      "Debugged and optimized embedded systems for performance, reliability, and low-power applications.",
     ],
   },
   {
-    title: "Embedded Systems Engineer",
-    company: "Smart Solutions Ltd",
-    period: "2018 - 2020",
+    title: "Embedded System Engineer",
+    company: "Revive Medical Technologies",
+    period: "2024 - 2025",
     description: [
-      "Developed firmware for microcontroller-based systems",
-      "Implemented communication protocols (I2C, SPI, UART)",
-      "Created hardware abstraction layers and device drivers",
-      "Collaborated with hardware team on PCB design",
-    ],
-  },
-  {
-    title: "Junior Firmware Developer",
-    company: "Embedded Systems Co.",
-    period: "2016 - 2018",
-    description: [
-      "Assisted in firmware development and testing",
-      "Debugged and optimized existing codebase",
-      "Participated in hardware testing and validation",
-      "Documented technical specifications and procedures",
+      "Programmed embedded systems for medical devices, focusing on enhancing functionality, safety, and compliance with industry standards.",
+      "Developed firmware for microcontrollers, including PIC, STM32, and NRF controllers, using C/C++ to ensure precise control and reliable operation of medical equipment.",
+      "Implemented communication protocols, including UART, SPI, I2C, and IoT-based connectivity solutions, to facilitate effective data exchange between device components.",
+      "Integrated hardware components such as sensors, actuators, and communication modules into medical devices, ensuring seamless operation, compatibility, and IoT-enabled remote monitoring.",
     ],
   },
 ];
 
 const education: EducationItem[] = [
   {
-    degree: "Master of Science in Embedded Systems",
-    school: "Technical University",
-    period: "2014 - 2016",
+    degree: "Bachelor of Science in Electrical Engineering",
+    school: "COMSATS University Islamabad",
+    period: "2020 - 2024",
     description: [
-      "Specialized in real-time systems and hardware design",
-      "Thesis on power optimization in embedded systems",
-      "Graduated with honors",
+      "Focused on embedded systems, electronics, and circuit design.",
+      "Completed projects involving microcontrollers, IoT, and real-time systems.",
+      "Graduated with strong academic performance and active participation in technical societies.",
     ],
   },
   {
-    degree: "Bachelor of Engineering in Electronics",
-    school: "Engineering University",
-    period: "2010 - 2014",
+    degree: "F.Sc Pre-Engineering",
+    school: "Punjab Group of Colleges",
+    period: "2018 - 2020",
     description: [
-      "Focused on digital electronics and microcontrollers",
-      "Senior project on IoT-based monitoring system",
-      "Active member of robotics club",
+      "Studied foundational courses in mathematics, physics, and chemistry.",
+      "Developed analytical and problem-solving skills essential for engineering studies.",
+      "Participated in science exhibitions and technical competitions.",
     ],
   },
 ];

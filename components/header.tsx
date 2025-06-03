@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { CpuChipIcon, SunIcon, MoonIcon, Bars3Icon } from "@heroicons/react/24/outline";
+import { SunIcon, MoonIcon, Bars3Icon } from "@heroicons/react/24/outline";
 import { useTheme } from "next-themes";
 import MobileMenu from "./mobile-menu";
 import LoadingBar from "./loading-bar";
+import EngineerAvatar from "./engineer-avatar";
 
 const navItems = [
   { name: "Home", href: "home" },
@@ -63,7 +64,7 @@ export default function Header() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <CpuChipIcon className="w-8 h-8 text-primary" />
+              <EngineerAvatar />
               <span className="text-xl font-bold">Ali Hassan</span>
             </motion.button>
 

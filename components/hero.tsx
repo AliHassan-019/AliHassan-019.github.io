@@ -5,6 +5,13 @@ import { TypeAnimation } from "react-type-animation";
 import { ArrowDownTrayIcon, EnvelopeIcon } from "@heroicons/react/24/outline";
 
 export default function Hero() {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800">
       {/* Background Animation */}
@@ -56,15 +63,15 @@ export default function Hero() {
                 <ArrowDownTrayIcon className="w-5 h-5 mr-2" />
                 Download Resume
               </motion.a>
-              <motion.a
-                href="#contact"
+              <motion.button
+                onClick={() => scrollToSection("contact")}
                 className="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-blue-600 bg-white border border-blue-600 rounded-lg hover:bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-400 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <EnvelopeIcon className="w-5 h-5 mr-2" />
                 Contact Me
-              </motion.a>
+              </motion.button>
             </div>
           </motion.div>
         </div>

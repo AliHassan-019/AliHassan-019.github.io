@@ -11,34 +11,32 @@ import {
 
 const skillCategories = [
   {
-    title: "Microcontrollers",
+    title: "Embedded Programming & Microcontrollers",
     icon: CpuChipIcon,
-    skills: ["ARM Cortex-M", "ESP32", "STM32", "PIC", "AVR"],
+    skills: [
+      "C/C++", "Python", "Assembly", "RTOS", "ARM Cortex-M", "ESP32", "STM32", "PIC", "AVR"
+    ],
   },
   {
-    title: "Programming",
-    icon: CodeBracketIcon,
-    skills: ["C/C++", "Python", "Assembly", "Rust", "RTOS"],
-  },
-  {
-    title: "Hardware Design",
+    title: "Hardware & PCB Design",
     icon: WrenchScrewdriverIcon,
-    skills: ["PCB Design", "Circuit Design", "Schematic Capture", "Prototyping"],
+    skills: [
+      "PCB Design", "Circuit Design", "Schematic Capture", "Prototyping", "Altium Designer", "Proteus", "AutoCAD Electrical"
+    ],
   },
   {
-    title: "Development Tools",
+    title: "Software & Development Tools",
     icon: CommandLineIcon,
-    skills: ["Git", "Docker", "CI/CD", "Debugging Tools", "Version Control"],
+    skills: [
+      "Git", "Docker", "CI/CD", "Debugging Tools", "Version Control", "Keil uVision", "MATLAB", "Arduino IDE", "STM32CubeIDE", "Visual Studio Code"
+    ],
   },
   {
-    title: "Testing & Validation",
+    title: "Testing, Validation & Systems",
     icon: BeakerIcon,
-    skills: ["Unit Testing", "Integration Testing", "Hardware Testing", "Validation"],
-  },
-  {
-    title: "Embedded Systems",
-    icon: CpuChipIcon,
-    skills: ["Firmware", "Drivers", "Bootloaders", "Communication Protocols"],
+    skills: [
+      "Unit Testing", "Integration Testing", "Hardware Testing", "Validation", "Firmware", "Drivers", "Bootloaders", "Communication Protocols"
+    ],
   },
 ];
 
@@ -59,7 +57,7 @@ const Skills = () => {
           <div className="w-24 h-1 bg-primary mx-auto rounded-full" />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {skillCategories.map((category, index) => (
             <motion.div
               key={category.title}

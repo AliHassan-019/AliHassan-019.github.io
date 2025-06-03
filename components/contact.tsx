@@ -142,10 +142,10 @@ export default function Contact() {
                     <div>
                       <h4 className="text-gray-900 dark:text-white font-medium">Phone</h4>
                       <a
-                        href="tel:+1234567890"
+                        href="tel:+92303865954"
                         className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors duration-200"
                       >
-                        +1 (234) 567-890
+                        +92303865954
                       </a>
                     </div>
                   </div>
@@ -154,7 +154,7 @@ export default function Contact() {
                     <div>
                       <h4 className="text-gray-900 dark:text-white font-medium">Location</h4>
                       <p className="text-gray-600 dark:text-gray-400">
-                        San Francisco, CA
+                        Islamabad, Pakistan
                       </p>
                     </div>
                   </div>
@@ -167,7 +167,7 @@ export default function Contact() {
                 </h3>
                 <div className="flex space-x-4">
                   <motion.a
-                    href="https://linkedin.com/in/ali-hassan"
+                    href="https://www.linkedin.com/in/alihassan019"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors duration-200"
@@ -177,7 +177,7 @@ export default function Contact() {
                     LinkedIn
                   </motion.a>
                   <motion.a
-                    href="https://github.com/ali-hassan"
+                    href="https://github.com/AliHassan-019"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors duration-200"
