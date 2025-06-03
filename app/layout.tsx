@@ -45,13 +45,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" content="#1f2937" media="(prefers-color-scheme: dark)" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <meta name="theme-color" content="#1f2937" />
       </head>
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${inter.className} antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-white`}>
         <ThemeProvider>
           <BackgroundAnimation />
           <div className="fixed inset-0 bg-white dark:bg-gray-900 transition-colors duration-300" />

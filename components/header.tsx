@@ -3,22 +3,29 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { CpuChipIcon, SunIcon, MoonIcon, Bars3Icon } from "@heroicons/react/24/outline";
+import { useTheme } from "next-themes";
 import MobileMenu from "./mobile-menu";
 import LoadingBar from "./loading-bar";
 
 const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Experience", href: "#experience" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "home" },
+  { name: "About", href: "about" },
+  { name: "Skills", href: "skills" },
+  { name: "Experience", href: "experience" },
+  { name: "Projects", href: "projects" },
+  { name: "Contact", href: "contact" },
 ];
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  // After mounting, we have access to the theme
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,13 +36,12 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
     }
-  }, [isDarkMode]);
+  };
 
   return (
     <>
@@ -50,8 +56,8 @@ export default function Header() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <motion.a
-              href="#home"
+            <motion.button
+              onClick={() => scrollToSection("home")}
               className="flex items-center space-x-2 text-gray-900 dark:text-white"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -59,30 +65,36 @@ export default function Header() {
             >
               <CpuChipIcon className="w-8 h-8 text-primary" />
               <span className="text-xl font-bold">Ali Hassan</span>
-            </motion.a>
+            </motion.button>
 
             {/* Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
               {navItems.map((item, index) => (
-                <motion.a
+                <motion.button
                   key={item.name}
-                  href={item.href}
+                  onClick={() => scrollToSection(item.href)}
                   className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors duration-200"
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
                   {item.name}
-                </motion.a>
+                </motion.button>
               ))}
               <motion.button
-                onClick={() => setIsDarkMode(!isDarkMode)}
+                onClick={() => {
+                  if (theme === "dark") {
+                    setTheme("light");
+                  } else {
+                    setTheme("dark");
+                  }
+                }}
                 className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors duration-200"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: navItems.length * 0.1 }}
               >
-                {isDarkMode ? (
+                {mounted && theme === "dark" ? (
                   <SunIcon className="w-5 h-5" />
                 ) : (
                   <MoonIcon className="w-5 h-5" />

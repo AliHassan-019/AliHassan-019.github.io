@@ -10,6 +10,14 @@ interface MobileMenuProps {
 }
 
 export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProps) {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+    onClose();
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -38,17 +46,16 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
             </div>
             <nav className="px-4 py-2">
               {navItems.map((item, index) => (
-                <motion.a
+                <motion.button
                   key={item.name}
-                  href={item.href}
-                  onClick={onClose}
-                  className="block py-3 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors duration-200"
+                  onClick={() => scrollToSection(item.href)}
+                  className="block w-full text-left py-3 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors duration-200"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
                   {item.name}
-                </motion.a>
+                </motion.button>
               ))}
             </nav>
           </motion.div>
