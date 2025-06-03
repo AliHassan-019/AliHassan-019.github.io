@@ -91,6 +91,7 @@ export default function Experience() {
           <div className="inline-flex rounded-lg bg-gray-100 dark:bg-gray-700 p-1">
             <button
               onClick={() => setActiveTab("experience")}
+              aria-label="Show experience section"
               className={`flex items-center px-6 py-3 rounded-lg transition-all duration-200 ${
                 activeTab === "experience"
                   ? "bg-white dark:bg-gray-800 shadow-md"
@@ -102,6 +103,7 @@ export default function Experience() {
             </button>
             <button
               onClick={() => setActiveTab("education")}
+              aria-label="Show education section"
               className={`flex items-center px-6 py-3 rounded-lg transition-all duration-200 ${
                 activeTab === "education"
                   ? "bg-white dark:bg-gray-800 shadow-md"
@@ -134,7 +136,13 @@ export default function Experience() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="relative pl-8 pb-8 border-l-2 border-primary"
                 >
-                  <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-primary" />
+                  <motion.div
+                    className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-primary"
+                    aria-label={`Timeline dot for ${activeTab === 'experience' ? (item as ExperienceItem).title : (item as EducationItem).degree}`}
+                    initial={{ scale: 0.7, opacity: 0.5 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                  />
                   <div className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-md">
                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                       {activeTab === "experience" 

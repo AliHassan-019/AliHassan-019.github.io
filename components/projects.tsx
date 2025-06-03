@@ -119,14 +119,22 @@ export default function Projects() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group h-full"
+                whileHover={{ scale: 1.04 }}
                 onHoverStart={() => setHoveredProject(project.title)}
                 onHoverEnd={() => setHoveredProject(null)}
               >
                 <motion.div
-                  className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col"
+                  className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 h-full flex flex-col"
                   whileHover={{ y: -5 }}
                 >
-                  <div className="relative h-48 bg-gray-200 dark:bg-gray-700">
+                  <div className="relative h-48 bg-gray-200 dark:bg-gray-700 overflow-hidden">
+                    <motion.img
+                      src={project.image}
+                      alt={project.title + ' project screenshot'}
+                      className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                      initial={{ scale: 1 }}
+                      whileHover={{ scale: 1.08 }}
+                    />
                     <motion.div
                       className="absolute inset-0 bg-primary/20"
                       animate={{
@@ -148,6 +156,7 @@ export default function Projects() {
                           key={tech}
                           className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
                           whileHover={{ scale: 1.05 }}
+                          aria-label={tech}
                         >
                           {tech}
                         </motion.span>
@@ -158,6 +167,7 @@ export default function Projects() {
                         href={project.link}
                         className="inline-flex items-center text-primary hover:text-primary-dark transition-colors duration-200"
                         whileHover={{ x: 5 }}
+                        aria-label={`View project: ${project.title}`}
                       >
                         View Project
                         <ArrowTopRightOnSquareIcon className="w-4 h-4 ml-2" />

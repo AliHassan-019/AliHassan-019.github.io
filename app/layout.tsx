@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import BackgroundAnimation from '@/components/background-animation'
 import { ThemeProvider } from '@/components/theme-provider'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -52,7 +51,6 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-white`}>
         <ThemeProvider>
-          <BackgroundAnimation />
           <div className="fixed inset-0 bg-white dark:bg-gray-900 transition-colors duration-300" />
           <div className="relative">
             {children}

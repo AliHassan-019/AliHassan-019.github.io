@@ -66,10 +66,11 @@ const Skills = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group"
+              whileHover={{ scale: 1.04, boxShadow: '0 8px 32px 0 rgba(60,132,247,0.15)' }}
             >
-              <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 h-full transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1">
+              <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 h-full transition-all duration-300 hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-2">
                 <div className="flex items-center mb-4">
-                  <category.icon className="w-8 h-8 text-primary mr-3" />
+                  <category.icon className="w-8 h-8 text-primary mr-3" aria-label={category.title + ' icon'} />
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                     {category.title}
                   </h3>
@@ -79,6 +80,7 @@ const Skills = () => {
                     <span
                       key={skill}
                       className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
+                      aria-label={skill}
                     >
                       {skill}
                     </span>
