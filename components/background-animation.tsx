@@ -1,11 +1,12 @@
 "use client";
 
 import { useCallback } from "react";
+import type { Engine } from "tsparticles-engine";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 
 export default function BackgroundAnimation() {
-  const particlesInit = useCallback(async (engine) => {
+  const particlesInit = useCallback(async (engine: Engine) => {
     await loadFull(engine);
   }, []);
 
