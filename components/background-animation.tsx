@@ -1,17 +1,19 @@
 "use client";
 
 import { useCallback } from "react";
-import type { Engine } from "@tsparticles/engine";
-import Particles from "react-tsparticles";
+import Particles from "@tsparticles/react";
 import { loadFull } from "tsparticles";
+import type { Engine } from "@tsparticles/engine";
 
 export default function BackgroundAnimation() {
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadFull(engine);
   }, []);
 
+  const ParticlesComponent: any = Particles;
+
   return (
-    <Particles
+    <ParticlesComponent
       id="tsparticles-bg"
       init={particlesInit}
       options={{
@@ -24,22 +26,30 @@ export default function BackgroundAnimation() {
         fpsLimit: 60,
         particles: {
           number: {
-            value: 60,
-            density: { enable: true, area: 900 },
+  value: 60,
+  density: {
+    enable: true,
+    width: 900,
+    height: 900,
+  },
+},
+
+          color: {
+            value: ["#60A5FA", "#38BDF8", "#64748B"],
           },
-          color: { value: ["#60A5FA", "#38BDF8", "#64748B"] },
           shape: {
             type: ["circle", "polygon"],
-            polygon: { nb_sides: 4 },
+            options: {
+              polygon: {
+                sides: 4,
+              },
+            },
           },
           opacity: {
             value: 0.3,
-            random: true,
-            anim: { enable: false },
           },
           size: {
-            value: 3,
-            random: { enable: true, minimumValue: 1 },
+            value: { min: 1, max: 3 },
           },
           links: {
             enable: true,
@@ -52,17 +62,22 @@ export default function BackgroundAnimation() {
             enable: true,
             speed: 0.6,
             direction: "none",
-            random: false,
-            straight: false,
-            outModes: { default: "out" },
-            attract: { enable: false },
+            outModes: {
+              default: "out",
+            },
           },
         },
         interactivity: {
           events: {
-            onHover: { enable: false },
-            onClick: { enable: false },
-            resize: true,
+            onHover: {
+              enable: false,
+            },
+            onClick: {
+              enable: false,
+            },
+            resize: {
+              enable: true,
+            },
           },
         },
         detectRetina: true,
@@ -70,10 +85,3 @@ export default function BackgroundAnimation() {
     />
   );
 }
-
-// Add the following CSS to your global styles (globals.css):
-// @keyframes gradientBG {
-//   0% { background-position: 0% 50%; }
-//   50% { background-position: 100% 50%; }
-//   100% { background-position: 0% 50%; }
-// } 

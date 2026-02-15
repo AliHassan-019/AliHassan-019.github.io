@@ -6,6 +6,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://your-domain.com'),
   title: 'Ali Hassan - Embedded Systems Engineer',
   description: 'Professional portfolio showcasing embedded systems engineering expertise, projects, and experience in firmware development, hardware design, and real-time systems.',
   keywords: ['Embedded Systems', 'Firmware Development', 'Hardware Design', 'RTOS', 'IoT', 'Microcontrollers'],
