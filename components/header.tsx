@@ -7,15 +7,24 @@ import { useTheme } from "next-themes";
 import MobileMenu from "./mobile-menu";
 import LoadingBar from "./loading-bar";
 import EngineerAvatar from "./engineer-avatar";
+import sections from "@/config/sections";
 
-const navItems = [
-  { name: "Home", href: "home" },
-  { name: "About", href: "about" },
-  { name: "Skills", href: "skills" },
-  { name: "Experience", href: "experience" },
-  { name: "Projects", href: "projects" },
-  { name: "Contact", href: "contact" },
+const allNav = [
+  { name: "Home", href: "home", key: "hero" },
+  { name: "About", href: "about", key: "about" },
+  { name: "Skills", href: "skills", key: "skills" },
+  { name: "Experience", href: "experience", key: "experience" },
+  { name: "Projects", href: "projects", key: "projects" },
+  { name: "GitHub", href: "github", key: "github" },
+  { name: "Contact", href: "contact", key: "contact" },
 ];
+
+const navItems = allNav.filter((item) => {
+  // If key is not defined in sections config, default to true
+  const key = (item as any).key as string | undefined;
+  if (!key) return true;
+  return (sections as any)[key] ?? true;
+});
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);

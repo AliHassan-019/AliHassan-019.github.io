@@ -2,14 +2,50 @@
 
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Dynamically import Lottie with no SSR
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 export default function About() {
-  const [isAnimationLoaded, setIsAnimationLoaded] = useState(false);
-  const [animationError, setAnimationError] = useState(false);
+  const [animationData, setAnimationData] = useState<any | null>(null);
+  const [loadingAnimation, setLoadingAnimation] = useState(true);
+  const [animationError, setAnimationError] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Try to load a user-provided about_me.json first, then fall back to embedded-systems.json
+    const load = async () => {
+      setLoadingAnimation(true);
+      try {
+        const candidates = [
+          "/animations/about_me.json",
+          "/animations/embedded-systems.json",
+        ];
+
+        let loaded: any = null;
+        for (const path of candidates) {
+          try {
+            const res = await fetch(path);
+            if (!res.ok) continue;
+            const json = await res.json();
+            loaded = json;
+            break;
+          } catch (e) {
+            continue;
+          }
+        }
+
+        if (!loaded) throw new Error("Animation not found");
+        setAnimationData(loaded);
+      } catch (err) {
+        setAnimationError((err as Error).message || "Failed to load animation");
+      } finally {
+        setLoadingAnimation(false);
+      }
+    };
+
+    load();
+  }, []);
 
   return (
     <section id="about" className="py-20 bg-background">
@@ -47,27 +83,22 @@ export default function About() {
               </p>
             </div>
             <div className="relative">
-              <div className="w-full h-[400px]">
-                {!isAnimationLoaded && !animationError && (
-                  <div className="w-full h-full flex items-center justify-center">
-                    <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+              <div className="w-full h-[400px] flex items-center justify-center">
+                {loadingAnimation && !animationError && (
+                  <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+                )}
+
+                {animationError && (
+                  <div className="text-foreground/60 text-center">
+                    <p>Animation could not be loaded</p>
                   </div>
                 )}
-                {animationError ? (
-                  <div className="w-full h-full flex items-center justify-center">
-                    <div className="text-foreground/60 text-center">
-                      <p>Animation could not be loaded</p>
-                    </div>
+
+                {!loadingAnimation && !animationError && animationData && (
+                  <div className="w-full h-full">
+                    {/* @ts-ignore - lottie-react default export */}
+                    <Lottie animationData={animationData} loop className="w-full h-full" />
                   </div>
-                ) : (
-                  <Lottie
-                    animationData={require("@/public/animations/embedded-systems.json")}
-                    loop={true}
-                    className="w-full h-full"
-                    onLoadedImages={() => setIsAnimationLoaded(true)}
-                    onError={() => setAnimationError(true)}
-                    style={{ display: isAnimationLoaded ? "block" : "none" }}
-                  />
                 )}
               </div>
             </div>

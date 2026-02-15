@@ -22,7 +22,7 @@ const experiences: ExperienceItem[] = [
   {
     title: "Embedded System Engineer",
     company: "Niura",
-    period: "2025 - Present",
+    period: "2025 - 2026",
     description: [
       "Designed and developed embedded systems leveraging nRF series, ESP32, and STM32, utilizing Zephyr RTOS and FreeRTOS for real-time applications.",
       "Worked on EEG data acquisition using ADS1299, integrating it into wireless earbuds for real-time bio-signal processing.",
@@ -46,6 +46,17 @@ const experiences: ExperienceItem[] = [
 
 const education: EducationItem[] = [
   {
+    degree: "Masters in Embedded Systems Security",
+    school: "University of Grenoble - ESISAR",
+    period: "2025 - 2026",
+    description: [
+      "Specialized in embedded systems security, focusing on secure firmware development and hardware security.",
+      "Studied advanced topics in cryptography, secure communication protocols, and embedded system vulnerabilities.",
+      "Engaged in research projects related to secure embedded systems and IoT security.",
+    ],
+  },
+  
+  {
     degree: "Bachelor of Science in Electrical Engineering",
     school: "COMSATS University Islamabad",
     period: "2020 - 2024",
@@ -55,16 +66,7 @@ const education: EducationItem[] = [
       "Graduated with strong academic performance and active participation in technical societies.",
     ],
   },
-  {
-    degree: "F.Sc Pre-Engineering",
-    school: "Punjab Group of Colleges",
-    period: "2018 - 2020",
-    description: [
-      "Studied foundational courses in mathematics, physics, and chemistry.",
-      "Developed analytical and problem-solving skills essential for engineering studies.",
-      "Participated in science exhibitions and technical competitions.",
-    ],
-  },
+  
 ];
 
 export default function Experience() {

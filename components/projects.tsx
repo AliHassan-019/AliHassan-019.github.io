@@ -10,7 +10,7 @@ const projects = [
     description: "Developed a data management application to handle student records efficiently. Utilized Object-Oriented Programming (OOP), file handling, data structures, and algorithm development for robust performance.",
     technologies: ["C++", "OOP", "File Handling", "Data Structures", "Algorithms"],
     image: "/images/projects/student-management.jpg",
-    link: "#",
+    link: "https://github.com/AliHassan-019/Student-Management-System",
     category: "Software"
   },
   {
@@ -18,23 +18,15 @@ const projects = [
     description: "Integrated and calibrated a Futek load cell for accurate force measurement. Calibrated and controlled a stepper motor for precise speed and distance in testing procedures. Focused on microcontroller programming, sensor integration, and embedded C.",
     technologies: ["Microcontroller", "Sensor Integration", "Motor Control", "Futek Load Cell", "Embedded C"],
     image: "/images/projects/catheter-testing.jpg",
-    link: "#",
+    link: "https://github.com/AliHassan-019/Catheter-Trackability-Testing-Machine---Firmware",
     category: "Medical"
-  },
-  {
-    title: "IoT Based Pick & Place Robotic Arm",
-    description: "Implemented an IoT-enabled robotic arm for remote operation and automated object handling. Utilized ESP32, IoT integration, robotics, automation, and sensor interfacing.",
-    technologies: ["ESP32", "IoT", "Robotics", "Automation", "Sensor Interfacing"],
-    image: "/images/projects/robotic-arm.jpg",
-    link: "#",
-    category: "IoT"
   },
   {
     title: "Disposable Real Time Pressure Monitoring Device",
     description: "Engineered a low-cost medical device for real-time pressure monitoring to ensure accurate data collection. Used STM32, Arduino, embedded systems design, real-time data acquisition, sensor calibration, and PCB design.",
     technologies: ["STM32", "Arduino", "Embedded Systems", "Real-Time Data", "Sensor Calibration", "PCB Design"],
     image: "/images/projects/pressure-monitoring.jpg",
-    link: "#",
+    link: "https://github.com/AliHassan-019/Real-Time-Pressure-Monitoring-Device",
     category: "Medical"
   },
   {
@@ -42,7 +34,7 @@ const projects = [
     description: "Developed a mechanical testing system for material strength analysis with automated data recording. Utilized STM32, RTOS, control systems, embedded programming, and web app integration.",
     technologies: ["STM32", "RTOS", "Control Systems", "Embedded Programming", "Web App Integration"],
     image: "/images/projects/flexural-testing.jpg",
-    link: "https://github.com/AliHassan-019/FTM",
+    link: "https://github.com/AliHassan-019/Flexural-Testing-Machine-Firmware",
     category: "Industrial"
   },
   {
@@ -134,6 +126,12 @@ export default function Projects() {
                       className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
                       initial={{ scale: 1 }}
                       whileHover={{ scale: 1.08 }}
+                      onError={(e) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        if (target.src.indexOf('placeholder.svg') === -1) {
+                          target.src = '/images/projects/placeholder.svg';
+                        }
+                      }}
                     />
                     <motion.div
                       className="absolute inset-0 bg-primary/20"

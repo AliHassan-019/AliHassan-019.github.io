@@ -47,6 +47,10 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        {/* If you place your avatar at public/images/avatar.png, browsers can use it as a PNG favicon */}
+        <link rel="icon" type="image/png" href="/images/avatar.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/images/avatar.png" />
         <meta name="theme-color" content="#1f2937" />
       </head>
       <body className={`${inter.className} antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-white`}>

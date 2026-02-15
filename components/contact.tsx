@@ -142,10 +142,10 @@ export default function Contact() {
                     <div>
                       <h4 className="text-gray-900 dark:text-white font-medium">Phone</h4>
                       <a
-                        href="tel:+92303865954"
+                        href="tel:+33745578166"
                         className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors duration-200"
                       >
-                        +92303865954
+                        +33745578166
                       </a>
                     </div>
                   </div>
@@ -154,7 +154,7 @@ export default function Contact() {
                     <div>
                       <h4 className="text-gray-900 dark:text-white font-medium">Location</h4>
                       <p className="text-gray-600 dark:text-gray-400">
-                        Islamabad, Pakistan
+                        Valence, France
                       </p>
                     </div>
                   </div>
