@@ -4,7 +4,17 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 
-const projects = [
+interface Project {
+  title: string;
+  description: string;
+  technologies: string[];
+  image: string;
+  link: string;
+  category?: string;
+  categories?: string[];
+}
+
+const projects: Project[] = [
   {
     title: "Student Management System Using C++",
     description: "Developed a data management application to handle student records efficiently. Utilized Object-Oriented Programming (OOP), file handling, data structures, and algorithm development for robust performance.",
@@ -51,7 +61,7 @@ const projects = [
     technologies: ["Embedded Systems", "AI", "Sensors", "Computer Vision"],
     image: "/images/projects/bhfr3.png",
     link: "https://github.com/AliHassan-019/BHFR3-Bionic-Head-and-Facial-Recognition",
-    categories: "Robotics"
+    categories: ["Robotics"]
   },
   {
     title: "True Wireless Stereo (TWS) Earbuds",
@@ -83,19 +93,31 @@ const projects = [
     technologies: ["AI", "Simulation", "Drone Navigation", "Surveillance", "Threat Detection"],
     image: "/images/projects/autonomous-airborne-security.png",
     link: "https://github.com/AliHassan-019/Autonomous-Airborne-Security-System-Simulation",
-    categories: "Robotics"
+    categories: ["Robotics"]
   },
 ];
 
-const categories = ["All", ...new Set(projects.flatMap(project => project.categories || [project.category]))];
+const categories: string[] = [
+  "All",
+  ...new Set(
+    projects
+      .flatMap(project => project.categories ?? (project.category ? [project.category] : []))
+      .filter((cat): cat is string => Boolean(cat))
+  ),
+];
 
 export default function Projects() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
 
-  const filteredProjects = selectedCategory === "All"
-    ? projects
-    : projects.filter(project => project.categories?.includes(selectedCategory) || project.category === selectedCategory);
+  const filteredProjects =
+    selectedCategory === "All"
+      ? projects
+      : projects.filter(
+          project =>
+            project.categories?.includes(selectedCategory) ||
+            project.category === selectedCategory
+        );
 
   return (
     <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800">
