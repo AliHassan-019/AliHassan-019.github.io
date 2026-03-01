@@ -21,7 +21,7 @@ interface EducationItem {
 const experiences: ExperienceItem[] = [
   {
     title: "Embedded System Engineer",
-    company: "Niura",
+    company: "MindTune Innovations",
     period: "2025 - 2026",
     description: [
       "Designed and developed embedded systems leveraging nRF series, ESP32, and STM32, utilizing Zephyr RTOS and FreeRTOS for real-time applications.",

@@ -7,35 +7,88 @@ import {
   WrenchScrewdriverIcon,
   CommandLineIcon,
   BeakerIcon,
+  ShieldCheckIcon,
 } from "@heroicons/react/24/outline";
 
 const skillCategories = [
   {
-    title: "Embedded Programming & Microcontrollers",
+    title: "Embedded Systems & Firmware",
     icon: CpuChipIcon,
     skills: [
-      "C/C++", "Python", "Assembly", "RTOS", "ARM Cortex-M", "ESP32", "STM32", "PIC", "AVR"
+      "Embedded C/C++",
+      "Python",
+      "FreeRTOS",
+      "Zephyr RTOS",
+      "ROS 2",
+      "Bare-Metal",
+      "Device Drivers",
+      "Bootloaders",
+      "Low-Power Design"
     ],
   },
   {
     title: "Hardware & PCB Design",
     icon: WrenchScrewdriverIcon,
     skills: [
-      "PCB Design", "Circuit Design", "Schematic Capture", "Prototyping", "Altium Designer", "Proteus", "AutoCAD Electrical"
+      "PCB Design",
+      "Schematic Design",
+      "Circuit Design",
+      "Prototyping",
+      "Altium Designer",
+      "Hardware Debugging"
     ],
   },
   {
-    title: "Software & Development Tools",
+    title: "Microcontrollers & Platforms",
+    icon: CpuChipIcon,
+    skills: [
+      "STM32",
+      "ESP32",
+      "nRF52 Series",
+      "PIC",
+      "Raspberry Pi",
+      "FPGA",
+      "Zynq-7000 (Zybo)",
+      "PLC"
+    ],
+  },
+  {
+    title: "Communication & IoT Protocols",
     icon: CommandLineIcon,
     skills: [
-      "Git", "Docker", "CI/CD", "Debugging Tools", "Version Control", "Keil uVision", "MATLAB", "Arduino IDE", "STM32CubeIDE", "Visual Studio Code"
+      "UART",
+      "SPI",
+      "I2C",
+      "CAN",
+      "USB",
+      "BLE",
+      "Zigbee",
+      "LoRaWAN",
+      "Wi-Fi"
     ],
   },
   {
-    title: "Testing, Validation & Systems",
+    title: "Embedded Security",
+    icon: ShieldCheckIcon,
+    skills: [
+      "Secure Boot",
+      "Cryptography",
+      "Hardware Security",
+      "TEE",
+      "Secure Firmware"
+    ],
+  },
+  {
+    title: "Tools & DevOps",
     icon: BeakerIcon,
     skills: [
-      "Unit Testing", "Integration Testing", "Hardware Testing", "Validation", "Firmware", "Drivers", "Bootloaders", "Communication Protocols"
+      "STM32CubeIDE",
+      "Keil µVision",
+      "MPLAB X",
+      "MATLAB/Simulink",
+      "Git",
+      "CI/CD",
+      "V&V Testing"
     ],
   },
 ];

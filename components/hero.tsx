@@ -13,7 +13,10 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <section
+      id="home"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800"
+    >
       {/* Background Animation */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-100/20 via-transparent to-transparent dark:from-blue-900/20" />
@@ -28,7 +31,9 @@ export default function Hero() {
           >
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
               Hi, I'm{" "}
-              <span className="text-blue-600 dark:text-blue-400">Ali Hassan</span>
+              <span className="text-blue-600 dark:text-blue-400">
+                Ali Hassan
+              </span>
             </h1>
             <h2 className="text-2xl md:text-4xl font-semibold text-gray-700 dark:text-gray-300 mb-8">
               <TypeAnimation
@@ -37,9 +42,13 @@ export default function Hero() {
                   1000,
                   "Firmware Developer",
                   1000,
-                  "Hardware Designer",
+                  "IoT Systems Engineer",
+                  1000,
+                  "Embedded Security Engineer",
                   1000,
                   "RTOS Specialist",
+                  1000,
+                  "Hardware Designer",
                   1000,
                 ]}
                 wrapper="span"
@@ -48,8 +57,9 @@ export default function Hero() {
               />
             </h2>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
-              Specializing in embedded systems design, firmware development, and hardware prototyping.
-              Passionate about creating efficient, reliable, and innovative solutions.
+              Specializing in embedded systems design, firmware development, and
+              hardware prototyping. Passionate about creating efficient,
+              reliable, and innovative solutions.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -95,4 +105,4 @@ export default function Hero() {
       </motion.div>
     </section>
   );
-} 
+}

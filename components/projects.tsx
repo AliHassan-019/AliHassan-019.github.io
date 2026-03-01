@@ -9,7 +9,7 @@ const projects = [
     title: "Student Management System Using C++",
     description: "Developed a data management application to handle student records efficiently. Utilized Object-Oriented Programming (OOP), file handling, data structures, and algorithm development for robust performance.",
     technologies: ["C++", "OOP", "File Handling", "Data Structures", "Algorithms"],
-    image: "/images/projects/student-management.jpg",
+    image: "/images/projects/student-management.png",
     link: "https://github.com/AliHassan-019/Student-Management-System",
     category: "Software"
   },
@@ -17,7 +17,7 @@ const projects = [
     title: "Catheter Trackability Testing Machine",
     description: "Integrated and calibrated a Futek load cell for accurate force measurement. Calibrated and controlled a stepper motor for precise speed and distance in testing procedures. Focused on microcontroller programming, sensor integration, and embedded C.",
     technologies: ["Microcontroller", "Sensor Integration", "Motor Control", "Futek Load Cell", "Embedded C"],
-    image: "/images/projects/catheter-testing.jpg",
+    image: "/images/projects/catheter-testing.png",
     link: "https://github.com/AliHassan-019/Catheter-Trackability-Testing-Machine---Firmware",
     category: "Medical"
   },
@@ -25,7 +25,7 @@ const projects = [
     title: "Disposable Real Time Pressure Monitoring Device",
     description: "Engineered a low-cost medical device for real-time pressure monitoring to ensure accurate data collection. Used STM32, Arduino, embedded systems design, real-time data acquisition, sensor calibration, and PCB design.",
     technologies: ["STM32", "Arduino", "Embedded Systems", "Real-Time Data", "Sensor Calibration", "PCB Design"],
-    image: "/images/projects/pressure-monitoring.jpg",
+    image: "/images/projects/pressure-monitoring.png",
     link: "https://github.com/AliHassan-019/Real-Time-Pressure-Monitoring-Device",
     category: "Medical"
   },
@@ -33,21 +33,61 @@ const projects = [
     title: "Flexural Testing Machine",
     description: "Developed a mechanical testing system for material strength analysis with automated data recording. Utilized STM32, RTOS, control systems, embedded programming, and web app integration.",
     technologies: ["STM32", "RTOS", "Control Systems", "Embedded Programming", "Web App Integration"],
-    image: "/images/projects/flexural-testing.jpg",
+    image: "/images/projects/flexural-testing.png",
     link: "https://github.com/AliHassan-019/Flexural-Testing-Machine-Firmware",
-    category: "Industrial"
+    category: "Medical"
   },
   {
     title: "Robotic Arm Based Skin Tumor Detection and Intervention Using Computer Vision",
     description: "Designed a robotic system using computer vision for automated skin tumor detection and intervention procedures. Leveraged Raspberry Pi, Python, computer vision, image processing, robotics, and machine learning algorithms.",
     technologies: ["Raspberry Pi", "Python", "Computer Vision", "Image Processing", "Robotics", "Machine Learning"],
-    image: "/images/projects/skin-tumor-robot.jpg",
+    image: "/images/projects/skin-tumor-robot.png",
     link: "https://github.com/AliHassan-019/Robotic-Arm-Based-Skin-Tumor-Detection-Intervention-System-Using-Computer-Vision",
     category: "Medical"
-  }
+  },
+  {
+    title: "Bionic Head and Facial Recognition",
+    description: "Developed a bionic head system with facial recognition capabilities. Integrated advanced sensors, embedded systems, and AI algorithms for real-time facial recognition and interaction.",
+    technologies: ["Embedded Systems", "AI", "Sensors", "Computer Vision"],
+    image: "/images/projects/bhfr3.png",
+    link: "https://github.com/AliHassan-019/BHFR3-Bionic-Head-and-Facial-Recognition",
+    categories: "Robotics"
+  },
+  {
+    title: "True Wireless Stereo (TWS) Earbuds",
+    description: "Designed and developed a TWS earbud system with advanced audio processing capabilities. Implemented Bluetooth connectivity, audio streaming, and battery management features.",
+    technologies: ["BLE", "Audio Processing", "Embedded Systems", "Battery Management"],
+    image: "/images/projects/tws-earbuds.png",
+    link: "https://github.com/AliHassan-019/True-Wireless-Stereo-TWS-Earbuds",
+    category: "IoT"
+  },
+  {
+    title: "Industrial-Radio",
+    description: "Designed and developed an industrial radio system for reliable communication in harsh environments. Implemented embedded systems design, RF communication protocols, and signal processing techniques.",
+    technologies: ["PCB Design", "Embedded Systems", "RF Communication", "Signal Processing"],
+    image: "/images/projects/industrial-radio.png",
+    link: "https://github.com/AliHassan-019/Industrial-Radio",
+    category: "PCB"
+  },
+  {
+    title: "ISE to Modbus RTU Converter",
+    description: "Designed and developed an ISE to Modbus RTU converter for industrial automation systems. Implemented protocol conversion, data handling, and communication standards.",
+    technologies: ["PCB Design", "Protocol Conversion", "Modbus RTU", "Industrial Automation", "Embedded Systems"],
+    image: "/images/projects/ise-modbus-converter.png",
+    link: "https://github.com/AliHassan-019/ISE-to-Modbus-RTU-Converter",
+    category: "PCB"
+  },
+  {
+    title: "Autonomous Airborne Security System Simulation",
+    description: "Designed and developed an autonomous airborne security system simulation using advanced algorithms and AI. Implemented drone navigation, surveillance, and threat detection capabilities.",
+    technologies: ["AI", "Simulation", "Drone Navigation", "Surveillance", "Threat Detection"],
+    image: "/images/projects/autonomous-airborne-security.png",
+    link: "https://github.com/AliHassan-019/Autonomous-Airborne-Security-System-Simulation",
+    categories: "Robotics"
+  },
 ];
 
-const categories = ["All", ...new Set(projects.map(project => project.category))];
+const categories = ["All", ...new Set(projects.flatMap(project => project.categories || [project.category]))];
 
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -55,7 +95,7 @@ export default function Projects() {
 
   const filteredProjects = selectedCategory === "All"
     ? projects
-    : projects.filter(project => project.category === selectedCategory);
+    : projects.filter(project => project.categories?.includes(selectedCategory) || project.category === selectedCategory);
 
   return (
     <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800">

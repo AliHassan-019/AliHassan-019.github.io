@@ -20,10 +20,9 @@ const GITHUB_USERNAME = "AliHassan-019";
 const GITHUB_API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos`;
 
 // Repositories to exclude from portfolio display
-// Add repository names here that you don't want to show
 const EXCLUDED_REPOS: string[] = [
-  // "example-repo-name",
-  // "another-repo-to-skip",
+  "AliHassan-019.github.io", // This portfolio repo itself
+ 
 ];
 
 // Professional descriptions for projects
