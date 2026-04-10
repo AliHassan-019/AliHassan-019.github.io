@@ -154,7 +154,7 @@ export default function Contact() {
                     <div>
                       <h4 className="text-gray-900 dark:text-white font-medium">Location</h4>
                       <p className="text-gray-600 dark:text-gray-400">
-                        Valence, France
+                        Lyon, France
                       </p>
                     </div>
                   </div>

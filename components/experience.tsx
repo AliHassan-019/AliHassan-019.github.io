@@ -20,6 +20,19 @@ interface EducationItem {
 
 const experiences: ExperienceItem[] = [
   {
+    title: "Robotics & Embedded Systems Engineer",
+    company: "ABMI - Internship",
+    period: "Mar 2026 - Present",
+    description: [
+      "Developed ROS 2 communication nodes for sensor integration and real-time system control.",
+      "Designed PID-based control algorithms for autonomous vehicle-trailer alignment and coupling.",
+      "Integrated UWB, IMU, and vision sensors for precise relative localization.",
+      "Contributed to embedded hardware architecture (AttelCore) and sensor interfacing.",
+      "Implemented GUI tools for system monitoring and manual control of the 6-DOF Stewart platform.",
+      "Conducted experimental validation campaigns and analyzed system performance and robustness.",
+    ],
+  },
+  {
     title: "Embedded System Engineer",
     company: "MindTune Innovations",
     period: "2025 - 2026",
