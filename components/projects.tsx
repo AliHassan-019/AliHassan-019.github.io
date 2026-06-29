@@ -95,6 +95,49 @@ const projects: Project[] = [
     link: "https://github.com/AliHassan-019/Autonomous-Airborne-Security-System-Simulation",
     categories: ["Robotics"]
   },
+  {
+  title: "Autonomous Coupling System Using a 6-DOF Stewart Platform",
+  description:
+    "Developed a ROS 2 control system for a six-actuator Stewart platform, combining ArUco vision tracking, MPU-9250 inertial sensing, Kalman sensor fusion, inverse kinematics, actuator calibration, and Arduino Mega motor control. Built a PySide6 operator dashboard for live monitoring, automatic/manual control, homing, calibration, and runtime safety.",
+  technologies: [
+    "ROS 2",
+    "Raspberry Pi",
+    "Arduino Mega",
+    "Python",
+    "OpenCV",
+    "ArUco",
+    "MPU-9250",
+    "Kalman Filter",
+    "Inverse Kinematics",
+    "PySide6",
+    "Embedded C",
+    "Motor Control"
+  ],
+  image: "/images/projects/stewart-control.png",
+  link: "https://github.com/AliHassan-019/Autonomous-Coupling/tree/REM/AliHassan",
+  category: "Robotics"
+},
+{
+  title: "EEG-Integrated Wireless Earbuds",
+  description:
+    "Developed a wireless earbud firmware platform combining Bluetooth audio, True Wireless Stereo synchronization, and six-channel EEG telemetry. Built around the AC6966B audio SoC with ADS1299 biopotential acquisition and nRF52 BLE streaming for synchronized real-time EEG data from both earbuds.",
+  technologies: [
+    "Embedded C",
+    "Bluetooth",
+    "TWS",
+    "AC6966B",
+    "ADS1299",
+    "nRF52",
+    "BLE",
+    "EEG Signal Acquisition",
+    "Audio Processing",
+    "Firmware Development",
+    "Power Management"
+  ],
+  image: "/images/projects/eeg-wireless-earbuds.png",
+  link: "https://github.com/AliHassan-019/EEG-Integrated-Wireless-Earbuds",
+  category: "Medical"
+},
 ];
 
 const categories: string[] = [
