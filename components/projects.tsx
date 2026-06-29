@@ -53,7 +53,7 @@ const projects: Project[] = [
     technologies: ["Raspberry Pi", "Python", "Computer Vision", "Image Processing", "Robotics", "Machine Learning"],
     image: "/images/projects/skin-tumor-robot.png",
     link: "https://github.com/AliHassan-019/Robotic-Arm-Based-Skin-Tumor-Detection-Intervention-System-Using-Computer-Vision",
-    category: "Medical"
+    categories: ["Medical", "Robotics", "AI"]
   },
   {
     title: "Bionic Head and Facial Recognition",
@@ -61,7 +61,7 @@ const projects: Project[] = [
     technologies: ["Embedded Systems", "AI", "Sensors", "Computer Vision"],
     image: "/images/projects/bhfr3.png",
     link: "https://github.com/AliHassan-019/BHFR3-Bionic-Head-and-Facial-Recognition",
-    categories: ["Robotics"]
+    categories: ["Robotics", "AI"]
   },
   {
     title: "True Wireless Stereo (TWS) Earbuds",
@@ -102,16 +102,13 @@ const projects: Project[] = [
   technologies: [
     "ROS 2",
     "Raspberry Pi",
-    "Arduino Mega",
-    "Python",
     "OpenCV",
     "ArUco",
     "MPU-9250",
     "Kalman Filter",
     "Inverse Kinematics",
-    "PySide6",
     "Embedded C",
-    "Motor Control"
+    "PID"
   ],
   image: "/images/projects/stewart-control.png",
   link: "https://github.com/AliHassan-019/Autonomous-Coupling/tree/REM/AliHassan",
@@ -131,12 +128,11 @@ const projects: Project[] = [
     "BLE",
     "EEG Signal Acquisition",
     "Audio Processing",
-    "Firmware Development",
     "Power Management"
   ],
   image: "/images/projects/eeg-wireless-earbuds.png",
   link: "https://github.com/AliHassan-019/EEG-Integrated-Wireless-Earbuds",
-  category: "Medical"
+    categories: ["Medical", "IoT"]
 },
 ];
 
@@ -149,6 +145,9 @@ const categories: string[] = [
   ),
 ];
 
+const getProjectCategories = (project: Project) =>
+  project.categories ?? (project.category ? [project.category] : []);
+
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
@@ -156,10 +155,8 @@ export default function Projects() {
   const filteredProjects =
     selectedCategory === "All"
       ? projects
-      : projects.filter(
-          project =>
-            project.categories?.includes(selectedCategory) ||
-            project.category === selectedCategory
+      : projects.filter(project =>
+          getProjectCategories(project).includes(selectedCategory)
         );
 
   return (
@@ -254,6 +251,18 @@ export default function Projects() {
                       {project.description}
                     </p>
                     <div className="flex flex-wrap gap-2 mb-4">
+                      {getProjectCategories(project).map((cat) => (
+                        <motion.span
+                          key={cat}
+                          className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
+                          whileHover={{ scale: 1.05 }}
+                          aria-label={`Category: ${cat}`}
+                        >
+                          {cat}
+                        </motion.span>
+                      ))}
+                    </div>
+                    <div className="flex flex-wrap gap-2 mb-4">
                       {project.technologies.map((tech) => (
                         <motion.span
                           key={tech}
@@ -268,6 +277,8 @@ export default function Projects() {
                     <div className="mt-auto pt-2">
                       <motion.a
                         href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="inline-flex items-center text-primary hover:text-primary-dark transition-colors duration-200"
                         whileHover={{ x: 5 }}
                         aria-label={`View project: ${project.title}`}

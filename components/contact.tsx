@@ -165,7 +165,17 @@ export default function Contact() {
                 <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
                   Connect With Me
                 </h3>
-                <div className="flex space-x-4">
+                <div className="flex flex-wrap gap-4">
+                  <motion.a
+                    href="mailto:alihassan.pk019@gmail.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors duration-200"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Gmail
+                  </motion.a>
                   <motion.a
                     href="https://www.linkedin.com/in/alihassan019"
                     target="_blank"
