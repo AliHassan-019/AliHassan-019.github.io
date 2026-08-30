@@ -1,151 +1,69 @@
-"use client";
-
-import { motion } from "framer-motion";
 import {
+  BoltIcon,
+  CircleStackIcon,
   CpuChipIcon,
-  CodeBracketIcon,
-  WrenchScrewdriverIcon,
-  CommandLineIcon,
-  BeakerIcon,
   ShieldCheckIcon,
+  SignalIcon,
+  WrenchScrewdriverIcon,
 } from "@heroicons/react/24/outline";
 
-const skillCategories = [
+const skillGroups = [
   {
-    title: "Embedded Systems & Firmware",
-    icon: CpuChipIcon,
-    skills: [
-      "Embedded C/C++",
-      "Python",
-      "FreeRTOS",
-      "Zephyr RTOS",
-      "ROS 2",
-      "Bare-Metal",
-      "Device Drivers",
-      "Bootloaders",
-      "Low-Power Design"
-    ],
+    title: "Firmware & RTOS",
+    icon: BoltIcon,
+    skills: ["Embedded C", "C++", "FreeRTOS", "Zephyr RTOS", "Device Drivers", "Interrupts", "DMA"],
   },
   {
-    title: "Hardware & PCB Design",
+    title: "Embedded Platforms",
+    icon: CpuChipIcon,
+    skills: ["STM32 / ARM Cortex-M", "nRF52", "PIC", "Jieli AC6966", "Raspberry Pi"],
+  },
+  {
+    title: "Robotics & Control",
+    icon: CircleStackIcon,
+    skills: ["ROS 2", "PID Control", "Sensor Fusion", "Localization", "Motor Control", "Encoder Feedback"],
+  },
+  {
+    title: "Connectivity",
+    icon: SignalIcon,
+    skills: ["UART", "SPI", "I2C", "BLE", "RS-485", "Modbus RTU", "MQTT", "LoRaWAN", "Zigbee"],
+  },
+  {
+    title: "Hardware Integration",
     icon: WrenchScrewdriverIcon,
-    skills: [
-      "PCB Design",
-      "Schematic Design",
-      "Circuit Design",
-      "Prototyping",
-      "Altium Designer",
-      "Hardware Debugging"
-    ],
+    skills: ["PCB Design", "Schematic Design", "Sensor Integration", "ADC Interfaces", "System Validation"],
   },
   {
-    title: "Microcontrollers & Platforms",
-    icon: CpuChipIcon,
-    skills: [
-      "STM32",
-      "ESP32",
-      "nRF52 Series",
-      "PIC",
-      "Raspberry Pi",
-      "FPGA",
-      "Zynq-7000 (Zybo)",
-      "PLC"
-    ],
-  },
-  {
-    title: "Communication & IoT Protocols",
-    icon: CommandLineIcon,
-    skills: [
-      "UART",
-      "SPI",
-      "I2C",
-      "CAN",
-      "USB",
-      "BLE",
-      "Zigbee",
-      "LoRaWAN",
-      "Wi-Fi"
-    ],
-  },
-  {
-    title: "Embedded Security",
+    title: "Tools & Engineering",
     icon: ShieldCheckIcon,
-    skills: [
-      "Secure Boot",
-      "Cryptography",
-      "Hardware Security",
-      "TEE",
-      "Secure Firmware"
-    ],
-  },
-  {
-    title: "Tools & DevOps",
-    icon: BeakerIcon,
-    skills: [
-      "STM32CubeIDE",
-      "Keil µVision",
-      "MPLAB X",
-      "MATLAB/Simulink",
-      "Git",
-      "CI/CD",
-      "V&V Testing"
-    ],
+    skills: ["Altium Designer", "STM32CubeIDE", "Keil µVision", "MPLAB X", "MATLAB/Simulink", "Linux", "Git", "CI/CD"],
   },
 ];
 
-const Skills = () => {
+export default function Skills() {
   return (
-    <section id="skills" className="py-20 bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Skills & Expertise
-          </h2>
-          <div className="w-24 h-1 bg-primary mx-auto rounded-full" />
-        </motion.div>
+    <section id="skills" className="section-shell border-b border-[#173044] bg-[#04101a]">
+      <div className="site-container">
+        <span className="section-kicker">Capabilities</span>
+        <h2 className="section-title">Firmware depth. System-level thinking.</h2>
+        <p className="section-copy">
+          A practical toolset for building, integrating, debugging, and validating connected embedded systems.
+        </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {skillCategories.map((category, index) => (
-            <motion.div
-              key={category.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group"
-              whileHover={{ scale: 1.04, boxShadow: '0 8px 32px 0 rgba(60,132,247,0.15)' }}
-            >
-              <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 h-full transition-all duration-300 hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-2">
-                <div className="flex items-center mb-4">
-                  <category.icon className="w-8 h-8 text-primary mr-3" aria-label={category.title + ' icon'} />
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                    {category.title}
-                  </h3>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
-                      aria-label={skill}
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+        <div className="mt-9 grid border-l border-t border-[#1f3a4e] sm:mt-12 sm:grid-cols-2 lg:grid-cols-3">
+          {skillGroups.map(({ title, icon: Icon, skills }) => (
+            <article key={title} className="border-b border-r border-[#1f3a4e] p-5 sm:p-8">
+              <Icon className="h-8 w-8 text-[#2790ff]" aria-hidden="true" />
+              <h3 className="mt-5 text-lg font-bold text-white">{title}</h3>
+              <ul className="mt-5 flex flex-wrap gap-2">
+                {skills.map((skill) => (
+                  <li key={skill} className="border border-[#294459] bg-[#071521] px-2.5 py-1.5 text-xs text-[#afc1ce]">{skill}</li>
+                ))}
+              </ul>
+            </article>
           ))}
         </div>
       </div>
     </section>
   );
-};
-
-export default Skills; 
+}

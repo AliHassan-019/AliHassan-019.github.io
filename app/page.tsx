@@ -1,28 +1,30 @@
+import About from "@/components/about";
+import Contact from "@/components/contact";
+import Experience from "@/components/experience";
+import Footer from "@/components/footer";
 import Header from "@/components/header";
 import Hero from "@/components/hero";
-import About from "@/components/about";
-import Skills from "@/components/skills";
-import Experience from "@/components/experience";
 import Projects from "@/components/projects";
-import GitHubRepositories from "@/components/github-repositories";
-import Contact from "@/components/contact";
-import sections from "@/config/sections";
 import ScrollToTop from "@/components/scroll-to-top";
-import CustomCursor from "@/components/custom-cursor";
+import Skills from "@/components/skills";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white dark:bg-gray-900">
-      <CustomCursor />
+    <>
+      <a className="skip-link" href="#main-content">
+        Skip to main content
+      </a>
       <Header />
-      {sections.hero && <Hero />}
-      {sections.about && <About />}
-      {sections.skills && <Skills />}
-      {sections.experience && <Experience />}
-      {sections.projects && <Projects />}
-      {sections.github && <GitHubRepositories />}
-      {sections.contact && <Contact />}
+      <main id="main-content">
+        <Hero />
+        <Projects />
+        <Experience />
+        <Skills />
+        <About />
+        <Contact />
+      </main>
+      <Footer />
       <ScrollToTop />
-    </main>
+    </>
   );
-} 
+}

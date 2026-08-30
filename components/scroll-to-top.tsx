@@ -1,47 +1,28 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 import { ArrowUpIcon } from "@heroicons/react/24/outline";
 
 export default function ScrollToTop() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
-
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
+    const handleScroll = () => setVisible(window.scrollY > 650);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
+  if (!visible) return null;
 
   return (
-    <AnimatePresence>
-      {isVisible && (
-        <motion.button
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.5 }}
-          onClick={scrollToTop}
-          className="fixed bottom-8 right-8 p-3 rounded-full bg-primary text-white shadow-lg hover:bg-primary-dark transition-colors duration-200 z-50"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <ArrowUpIcon className="w-6 h-6" />
-        </motion.button>
-      )}
-    </AnimatePresence>
+    <button
+      type="button"
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      aria-label="Scroll to top"
+      className="fixed bottom-4 right-4 z-40 grid h-11 w-11 place-items-center border border-[#31526e] bg-[#071521] text-[#eaf1f6] shadow-xl hover:border-[#2790ff] hover:text-[#2790ff] sm:bottom-5 sm:right-5 sm:h-12 sm:w-12"
+    >
+      <ArrowUpIcon className="h-5 w-5" aria-hidden="true" />
+    </button>
   );
-} 
+}

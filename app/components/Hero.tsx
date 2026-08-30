@@ -17,7 +17,7 @@ const Hero = () => {
             className="mb-8"
           >
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
-              Hi, I'm <span className="text-primary">Your Name</span>
+              Hi, I&apos;m <span className="text-primary">Your Name</span>
             </h1>
             <h2 className="text-2xl md:text-3xl mb-6">
               <TypeAnimation

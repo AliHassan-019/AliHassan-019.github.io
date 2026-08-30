@@ -1,132 +1,82 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { SunIcon, MoonIcon, Bars3Icon } from "@heroicons/react/24/outline";
-import { useTheme } from "next-themes";
-import MobileMenu from "./mobile-menu";
+import { useRef, useState } from "react";
+import { Bars3Icon, CpuChipIcon } from "@heroicons/react/24/outline";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import LoadingBar from "./loading-bar";
-import EngineerAvatar from "./engineer-avatar";
-import sections from "@/config/sections";
+import MobileMenu from "./mobile-menu";
 
-const allNav = [
-  { name: "Home", href: "home", key: "hero" },
-  { name: "About", href: "about", key: "about" },
-  { name: "Skills", href: "skills", key: "skills" },
-  { name: "Experience", href: "experience", key: "experience" },
-  { name: "Projects", href: "projects", key: "projects" },
-  { name: "GitHub", href: "github", key: "github" },
-  { name: "Contact", href: "contact", key: "contact" },
+const navItems = [
+  { name: "Work", href: "#work" },
+  { name: "Experience", href: "#experience" },
+  { name: "Skills", href: "#skills" },
+  { name: "About", href: "#about" },
+  { name: "Contact", href: "#contact" },
 ];
 
-const navItems = allNav.filter((item) => {
-  // If key is not defined in sections config, default to true
-  const key = (item as any).key as string | undefined;
-  if (!key) return true;
-  return (sections as any)[key] ?? true;
-});
-
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
-  // After mounting, we have access to the theme
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+  const closeMenu = () => {
+    setIsOpen(false);
+    window.setTimeout(() => menuButtonRef.current?.focus(), 0);
   };
 
   return (
     <>
       <LoadingBar />
-      <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-          isScrolled
-            ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-md"
-            : "bg-transparent"
-        }`}
-      >
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <motion.button
-              onClick={() => scrollToSection("home")}
-              className="flex items-center space-x-2 text-gray-900 dark:text-white"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <EngineerAvatar />
-              <span className="text-xl font-bold">Ali Hassan</span>
-            </motion.button>
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-[#173044] bg-[#04101a]/95 backdrop-blur-md">
+        <div className="site-container flex h-16 items-center justify-between sm:h-[72px]">
+          <a href="#home" className="flex items-center gap-3" aria-label="Ali Hassan — home">
+            <CpuChipIcon className="h-7 w-7 text-[#2790ff] sm:h-8 sm:w-8" aria-hidden="true" />
+            <span className="text-base font-bold tracking-[0.08em] text-white sm:text-lg">
+              ALI <span className="text-[#2790ff]">HASSAN</span>
+            </span>
+          </a>
 
-            {/* Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
-              {navItems.map((item, index) => (
-                <motion.button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors duration-200"
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
+          <div className="hidden items-center gap-7 md:flex">
+            <nav className="flex items-center gap-7" aria-label="Primary navigation">
+              {navItems.map((item) => (
+                <a key={item.href} href={item.href} className="text-sm text-[#b7c4ce] transition-colors hover:text-white">
                   {item.name}
-                </motion.button>
+                </a>
               ))}
-              <motion.button
-                onClick={() => {
-                  if (theme === "dark") {
-                    setTheme("light");
-                  } else {
-                    setTheme("dark");
-                  }
-                }}
-                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors duration-200"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: navItems.length * 0.1 }}
-              >
-                {mounted && theme === "dark" ? (
-                  <SunIcon className="w-5 h-5" />
-                ) : (
-                  <MoonIcon className="w-5 h-5" />
-                )}
-              </motion.button>
             </nav>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(true)}
-              className="md:hidden p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors duration-200"
+            <span className="h-6 w-px bg-[#294459]" aria-hidden="true" />
+            <a
+              href="https://www.linkedin.com/in/alihassan019"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn profile"
+              className="text-[#dbe6ef] transition-colors hover:text-[#2790ff]"
             >
-              <Bars3Icon className="w-6 h-6" />
-            </button>
+              <FaLinkedinIn className="h-5 w-5" aria-hidden="true" />
+            </a>
+            <a
+              href="https://github.com/AliHassan-019"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub profile"
+              className="text-[#dbe6ef] transition-colors hover:text-[#2790ff]"
+            >
+              <FaGithub className="h-5 w-5" aria-hidden="true" />
+            </a>
           </div>
+
+          <button
+            ref={menuButtonRef}
+            type="button"
+            onClick={() => setIsOpen(true)}
+            aria-label="Open navigation menu"
+            aria-expanded={isOpen}
+            className="grid min-h-11 min-w-11 place-items-center rounded-md text-[#dbe6ef] hover:bg-[#102230] md:hidden"
+          >
+            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+          </button>
         </div>
       </header>
-      <MobileMenu
-        isOpen={isMobileMenuOpen}
-        onClose={() => setIsMobileMenuOpen(false)}
-        navItems={navItems}
-      />
+      <MobileMenu isOpen={isOpen} onClose={closeMenu} navItems={navItems} />
     </>
   );
-} 
+}

@@ -1,67 +1,61 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import { ThemeProvider } from '@/components/theme-provider'
+import type { Metadata } from "next";
+import "./globals.css";
 
-const inter = Inter({ subsets: ['latin'] })
+const siteUrl = "https://alihassan-019.github.io";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://your-domain.com'),
-  title: 'Ali Hassan - Embedded Systems Engineer',
-  description: 'Professional portfolio showcasing embedded systems engineering expertise, projects, and experience in firmware development, hardware design, and real-time systems.',
-  keywords: ['Embedded Systems', 'Firmware Development', 'Hardware Design', 'RTOS', 'IoT', 'Microcontrollers'],
-  authors: [{ name: 'Ali Hassan' }],
+  metadataBase: new URL(siteUrl),
+  title: "Ali Hassan | Embedded Systems Engineer",
+  description:
+    "Embedded Systems Engineer building reliable firmware and integrated hardware for robotics, IoT, medical devices, and real-time control systems.",
+  keywords: [
+    "Embedded Systems Engineer",
+    "Firmware Engineer",
+    "STM32",
+    "nRF52",
+    "Zephyr RTOS",
+    "FreeRTOS",
+    "ROS 2",
+    "PCB Design",
+  ],
+  authors: [{ name: "Ali Hassan", url: siteUrl }],
+  alternates: { canonical: siteUrl },
   openGraph: {
-    title: 'Ali Hassan - Embedded Systems Engineer',
-    description: 'Professional portfolio showcasing embedded systems engineering expertise and projects',
-    url: 'https://your-domain.com',
-    siteName: 'Ali Hassan Portfolio',
+    title: "Ali Hassan | Embedded Systems Engineer",
+    description:
+      "Firmware and hardware integration for robotics, connected devices, and medical systems.",
+    url: siteUrl,
+    siteName: "Ali Hassan Portfolio",
     images: [
       {
-        url: '/images/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Ali Hassan - Embedded Systems Engineer',
+        url: "/images/projects/stewart-control.webp",
+        width: 1536,
+        height: 1024,
+        alt: "Autonomous Stewart platform control system developed by Ali Hassan",
       },
     ],
-    locale: 'en_US',
-    type: 'website',
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Ali Hassan - Embedded Systems Engineer',
-    description: 'Professional portfolio showcasing embedded systems engineering expertise and projects',
-    images: ['/images/og-image.jpg'],
+    card: "summary_large_image",
+    title: "Ali Hassan | Embedded Systems Engineer",
+    description:
+      "Firmware and hardware integration for robotics, connected devices, and medical systems.",
+    images: ["/images/projects/stewart-control.webp"],
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
-}
+  robots: { index: true, follow: true },
+};
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth">
       <head>
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        {/* If you place your avatar at public/images/avatar.png, browsers can use it as a PNG favicon */}
-        <link rel="icon" type="image/png" href="/images/avatar.png" />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/images/avatar.png" />
-        <meta name="theme-color" content="#1f2937" />
+        <meta name="theme-color" content="#04101a" />
       </head>
-      <body className={`${inter.className} antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-white`}>
-        <ThemeProvider>
-          <div className="fixed inset-0 bg-white dark:bg-gray-900 transition-colors duration-300" />
-          <div className="relative">
-            {children}
-          </div>
-        </ThemeProvider>
-      </body>
+      <body>{children}</body>
     </html>
-  )
-} 
+  );
+}
