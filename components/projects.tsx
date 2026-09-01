@@ -186,7 +186,7 @@ export default function Projects() {
             <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#2790ff]">Project archive</p>
             <h3 className="mt-2 text-2xl font-bold text-white sm:text-3xl">More systems I have built</h3>
           </div>
-          <div className="flex w-full shrink-0 justify-between gap-3 sm:w-auto sm:justify-start">
+          <div className="hidden shrink-0 gap-3 lg:flex">
             <button type="button" onClick={() => moveProjects(-1)} aria-label="Show previous projects" className="grid h-12 w-12 place-items-center rounded-full border border-[#31526e] bg-[#0b1d2a] text-white transition hover:border-[#2790ff] hover:bg-[#123047] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7fc0ff]">
               <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
             </button>
@@ -196,9 +196,9 @@ export default function Projects() {
           </div>
         </div>
 
-        <div ref={railRef} className="project-rail -mx-3 mt-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-3 pb-4 sm:mx-0 sm:mt-6 sm:gap-5 sm:px-0" aria-label="Additional projects">
+        <div ref={railRef} className="mt-5 grid grid-cols-1 gap-4 sm:mt-6 sm:grid-cols-2 sm:gap-5 lg:flex lg:snap-x lg:snap-mandatory lg:overflow-x-auto lg:pb-4" aria-label="Additional projects">
           {supporting.map((project) => (
-            <article key={project.title} className="group flex min-w-[88%] snap-start flex-col overflow-hidden border border-[#1f3a4e] bg-[#071521] sm:min-w-[48%] lg:min-w-[31.5%]">
+            <article key={project.title} className="group flex min-w-0 flex-col overflow-hidden border border-[#1f3a4e] bg-[#071521] lg:min-w-[31.5%] lg:snap-start">
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image src={project.image} alt={`${project.title} project`} fill sizes="(max-width: 640px) 86vw, (max-width: 1024px) 48vw, 32vw" className="object-cover transition-transform duration-300 group-hover:scale-[1.025]" loading="lazy" />
               </div>

@@ -45,9 +45,9 @@ export default function About() {
             <AcademicCapIcon className="h-7 w-7 text-[#2790ff]" aria-hidden="true" />
             <h3 className="text-xl font-bold text-white">Education</h3>
           </div>
-          <div className="divide-y divide-[#1f3a4e]">
+          <div className="mt-5 grid grid-cols-1 gap-4 min-[430px]:grid-cols-2 lg:block lg:divide-y lg:divide-[#1f3a4e]">
             {education.map((item) => (
-              <article key={item.degree} className="py-6">
+              <article key={item.degree} className="min-w-0 border border-[#294459] bg-[#091a27] p-5 lg:border-0 lg:bg-transparent lg:px-0 lg:py-6">
                 <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#2790ff]">{item.period}</p>
                 <h4 className="mt-2 text-lg font-bold text-white">{item.degree}</h4>
                 <p className="mt-1 text-sm text-[#9eacb7]">{item.school}</p>

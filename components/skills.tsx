@@ -49,10 +49,9 @@ export default function Skills() {
         <p className="section-copy">
           A practical toolset for building, integrating, debugging, and validating connected embedded systems.
         </p>
-
-        <div className="mt-9 grid border-l border-t border-[#1f3a4e] sm:mt-12 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 border-l border-t border-[#1f3a4e] min-[430px]:grid-cols-2 sm:mt-12 lg:grid-cols-3">
           {skillGroups.map(({ title, icon: Icon, skills }) => (
-            <article key={title} className="border-b border-r border-[#1f3a4e] p-5 sm:p-8">
+            <article key={title} className="min-w-0 border-b border-r border-[#1f3a4e] p-5 sm:p-7 lg:p-8">
               <Icon className="h-8 w-8 text-[#2790ff]" aria-hidden="true" />
               <h3 className="mt-5 text-lg font-bold text-white">{title}</h3>
               <ul className="mt-5 flex flex-wrap gap-2">

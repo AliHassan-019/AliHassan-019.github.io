@@ -51,10 +51,10 @@ export default function Experience() {
           </div>
         </div>
 
-        <ol className="ml-1 border-l border-[#31526e] pl-5 sm:ml-0 sm:pl-10">
+        <ol className="grid min-w-0 gap-4 md:block md:border-l md:border-[#31526e] md:pl-10">
           {experiences.map((experience) => (
-            <li key={`${experience.company}-${experience.period}`} className="relative pb-12 last:pb-0">
-              <span className="absolute -left-[1.58rem] top-1 h-3 w-3 rounded-full border-2 border-[#2790ff] bg-[#071521] sm:-left-[2.78rem]" aria-hidden="true" />
+            <li key={`${experience.company}-${experience.period}`} className="relative min-w-0 border border-[#294459] bg-[#091a27] p-5 md:border-0 md:bg-transparent md:p-0 md:pb-12 md:last:pb-0">
+              <span className="absolute -left-[2.78rem] top-1 hidden h-3 w-3 rounded-full border-2 border-[#2790ff] bg-[#071521] md:block" aria-hidden="true" />
               <p className="text-xs font-bold uppercase tracking-[0.13em] text-[#2790ff]">{experience.period}</p>
               <h3 className="mt-2 text-xl font-bold tracking-[-0.02em] text-white sm:text-2xl">{experience.role}</h3>
               <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">

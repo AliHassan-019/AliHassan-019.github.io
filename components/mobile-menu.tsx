@@ -32,7 +32,7 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[70] md:hidden" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <div className="fixed inset-0 z-[70] lg:hidden" role="dialog" aria-modal="true" aria-label="Navigation menu">
       <button
         type="button"
         aria-label="Close navigation menu"

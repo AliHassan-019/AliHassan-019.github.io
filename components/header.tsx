@@ -35,7 +35,7 @@ export default function Header() {
             </span>
           </a>
 
-          <div className="hidden items-center gap-7 md:flex">
+          <div className="hidden items-center gap-7 lg:flex">
             <nav className="flex items-center gap-7" aria-label="Primary navigation">
               {navItems.map((item) => (
                 <a key={item.href} href={item.href} className="text-sm text-[#b7c4ce] transition-colors hover:text-white">
@@ -70,7 +70,7 @@ export default function Header() {
             onClick={() => setIsOpen(true)}
             aria-label="Open navigation menu"
             aria-expanded={isOpen}
-            className="grid min-h-11 min-w-11 place-items-center rounded-md text-[#dbe6ef] hover:bg-[#102230] md:hidden"
+            className="grid min-h-11 min-w-11 place-items-center rounded-md text-[#dbe6ef] hover:bg-[#102230] lg:hidden"
           >
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>

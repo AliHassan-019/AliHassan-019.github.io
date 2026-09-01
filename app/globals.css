@@ -57,7 +57,18 @@ textarea:focus-visible {
 }
 
 section {
+  min-width: 0;
   scroll-margin-top: 76px;
+}
+
+main,
+img,
+svg {
+  max-width: 100%;
+}
+
+main {
+  min-width: 0;
 }
 
 .skip-link {
@@ -179,7 +190,7 @@ section {
   }
 
   .site-container {
-    width: min(100% - 2rem, 1180px);
+    width: min(1180px, calc(100% - 2rem));
   }
 
   .section-shell {
@@ -205,7 +216,7 @@ section {
 
 @media (max-width: 420px) {
   .site-container {
-    width: min(100% - 1.5rem, 1180px);
+    width: min(1180px, calc(100% - 1.5rem));
   }
 
   .section-shell {
@@ -229,12 +240,22 @@ section {
 }
 
 .project-rail {
+  max-width: 100%;
   overscroll-behavior-x: contain;
   scroll-padding-inline: 0.25rem;
   touch-action: pan-x;
   scrollbar-width: none;
 }
 
-.project-rail::-webkit-scrollbar {
+.project-rail::-webkit-scrollbar,
+.mobile-rail::-webkit-scrollbar {
   display: none;
+}
+
+.mobile-rail {
+  max-width: 100%;
+  overscroll-behavior-x: contain;
+  scroll-padding-inline: 0.25rem;
+  touch-action: pan-x;
+  scrollbar-width: none;
 }
